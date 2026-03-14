@@ -1,0 +1,21 @@
+# Fix for MIME type errors on module scripts
+AddType application/javascript .js
+AddType application/javascript .mjs
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 1. Handle API requests (point to your php-server or api folder)
+  # If you moved php-server contents to /api, use this:
+  RewriteRule ^api/(.*)$ api/index.php [QSA,L]
+  # If you kept the folder as php-server, use this:
+  RewriteRule ^php-server/(.*)$ php-server/index.php [QSA,L]
+
+  # 2. For React Router: If the file exists, serve it
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # 3. Otherwise, serve index.html for all other routes
+  RewriteRule ^ index.html [L]
+</IfModule>
