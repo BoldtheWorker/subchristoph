@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 92%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 92%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 92%;
+
+    --primary: 43 72% 52%;
+    --primary-foreground: 0 0% 7%;
+
+    --secondary: 156 82% 12%;
+    --secondary-foreground: 0 0% 92%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 55%;
+
+    --accent: 156 82% 12%;
+    --accent-foreground: 0 0% 92%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 92%;
+
+    --border: 0 0% 27%;
+    --input: 0 0% 20%;
+    --ring: 43 72% 52%;
+
+    --radius: 0.25rem;
+
+    --gold: 43 72% 52%;
+    --gold-foreground: 0 0% 7%;
+    --green: 156 72% 22%;
+    --green-light: 156 55% 40%;
+    --green-muted: 156 40% 10%;
+    --green-accent: 156 60% 28%;
+    --green-bright: 156 65% 50%;
+    --gold-light: 43 80% 65%;
+    --gold-muted: 43 50% 15%;
+    --surface: 0 0% 10%;
+    --surface-elevated: 0 0% 13%;
+
+    --font-heading: 'Manrope', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* Horizontal filmstrip scroll */
+.filmstrip-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.filmstrip-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Channel strip transitions */
+.channel-strip {
+  transition: opacity 0.4s ease, flex 0.5s ease;
+}
+.channel-strip.faded {
+  opacity: 0.2;
+}
+.channel-strip.solo {
+  opacity: 1;
+}
